@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:screen_recorder_box/screen_recorder_box.dart';
+import 'package:screen_recording_box/screen_recorder_box.dart';
 
 void main() {
   runApp(MyApp());
