@@ -1,15 +1,45 @@
-# screen_recorder_box
+# screen_recording_box
 
-A new flutter plugin project.
+A flutter plugin allowing you to record your screen
 
-## Getting Started
+## Android integration
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+Android needs the following permissions
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```xml
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+  <uses-permission android:name="android.permission.RECORD_AUDIO" />
+```
 
+## iOS integration
+
+Does not work yet - will be implemented shortly
+
+## Usage
+
+```dart
+// Start recording (return a bool telling if screen recording has started or not)
+bool result = await ScreenRecorderBox.startRecording('screen_recording_name');
+
+// Stop recording (returns the screen recording path)
+String result = await ScreenRecorderBox.stopRecording();
+
+// Pause recording (returns a bool telling if recording has been paused or not)
+bool result = await ScreenRecorderBox.pauseRecording();
+
+// Resume recording (returns a bool telling if recording has resumed or not)
+bool result = await ScreenRecorderBox.resumeRecording();
+
+// Find out if screen is being recorded right now (it returns false on paused recording)
+bool isRecording = ScreenRecorderBox.isRecording;
+
+// Find out if recording has been started (returns true if recording not stopped)
+bool hasBeenStarted = ScreenRecorderBox.hasBeenStarted;
+```
+
+## Questions?
+
+Please look at and try the example - its pretty straight forward 🦖
