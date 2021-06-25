@@ -1,4 +1,4 @@
-# screen_recorder_box
+# screen_recording_box
 
 A flutter plugin allowing you to record your screen
 
