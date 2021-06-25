@@ -14,6 +14,11 @@ Android needs the following permissions
   <uses-permission android:name="android.permission.RECORD_AUDIO" />
 ```
 
+You also need to set requestLegacyExternalStorage to true, here is an example:
+```xml
+  <application android:label="APPNAME" android:icon="ICONNAME" android:requestLegacyExternalStorage="true">
+```
+
 ## iOS integration
 
 Does not work yet - will be implemented shortly
