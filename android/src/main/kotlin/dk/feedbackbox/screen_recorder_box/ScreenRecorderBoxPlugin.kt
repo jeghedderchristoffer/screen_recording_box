@@ -56,9 +56,7 @@ class ScreenRecorderBoxPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, 
   @RequiresApi(Build.VERSION_CODES.N)
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
     if (requestCode == screenRecorderStartRequestCode) {
-      println("1")
       if (resultCode == Activity.RESULT_OK) {
-        println("2")
         _mediaProjectionCallback = MediaProjectionCallback()
         _mediaProjection = _projectionManager?.getMediaProjection(resultCode, data!!)
         _mediaProjection?.registerCallback(_mediaProjectionCallback, null)
