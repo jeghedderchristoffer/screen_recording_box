@@ -8,7 +8,7 @@ class ScreenRecorderBox {
   static const MethodChannel _channel =
       const MethodChannel('screen_recorder_box');
 
-  static Future<bool> startRecording(String name) async {
+  static Future<bool> startRecording(String name, String path) async {
     // First start forground service (only android)
     await startForgroundService();
 
@@ -21,6 +21,7 @@ class ScreenRecorderBox {
       'name': name,
       'height': deviceHeight,
       'width': deviceWidth,
+      'path': path,
     });
 
     // Return state

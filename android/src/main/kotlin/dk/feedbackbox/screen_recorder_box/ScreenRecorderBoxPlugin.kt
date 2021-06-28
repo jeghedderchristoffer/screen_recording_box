@@ -128,6 +128,7 @@ class ScreenRecorderBoxPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, 
     _videoName = call.argument("name")!!
     _displayHeight = call.argument("height")!!
     _displayWidth = call.argument("width")!!
+    _pathToSaveRecording = call.argument("path")!!
 
     println("Video name: $_videoName")
     println("Device height: $_displayHeight")

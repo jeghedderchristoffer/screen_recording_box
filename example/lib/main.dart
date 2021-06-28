@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:screen_recording_box/screen_recorder_box.dart';
 
@@ -23,7 +26,11 @@ class _MyAppState extends State<MyApp> {
   }
 
   void startRecording() async {
-    bool result = await ScreenRecorderBox.startRecording('test');
+    Directory appDocDir = await getApplicationDocumentsDirectory();
+    bool result = await ScreenRecorderBox.startRecording(
+      'test',
+      appDocDir.path,
+    );
     print("START RESULT: " + result.toString());
     setState(() {}); // UPDATE UI
   }
