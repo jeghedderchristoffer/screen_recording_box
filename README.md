@@ -14,11 +14,6 @@ Android needs the following permissions
   <uses-permission android:name="android.permission.RECORD_AUDIO" />
 ```
 
-You also need to set requestLegacyExternalStorage to true, here is an example:
-```xml
-  <application android:label="APPNAME" android:icon="ICONNAME" android:requestLegacyExternalStorage="true">
-```
-
 ## iOS integration
 
 Does not work yet - will be implemented shortly
@@ -27,7 +22,8 @@ Does not work yet - will be implemented shortly
 
 ```dart
 // Start recording (return a bool telling if screen recording has started or not)
-bool result = await ScreenRecorderBox.startRecording('screen_recording_name');
+String somePath = '/path/to/whatever/folder/you/like';
+bool result = await ScreenRecorderBox.startRecording('screen_recording_name', somePath);
 
 // Stop recording (returns the screen recording path)
 String result = await ScreenRecorderBox.stopRecording();
