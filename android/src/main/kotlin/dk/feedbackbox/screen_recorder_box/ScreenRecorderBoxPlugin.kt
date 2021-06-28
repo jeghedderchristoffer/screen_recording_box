@@ -56,7 +56,9 @@ class ScreenRecorderBoxPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, 
   @RequiresApi(Build.VERSION_CODES.N)
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
     if (requestCode == screenRecorderStartRequestCode) {
+      println("1")
       if (resultCode == Activity.RESULT_OK) {
+        println("2")
         _mediaProjectionCallback = MediaProjectionCallback()
         _mediaProjection = _projectionManager?.getMediaProjection(resultCode, data!!)
         _mediaProjection?.registerCallback(_mediaProjectionCallback, null)
@@ -66,6 +68,9 @@ class ScreenRecorderBoxPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, 
       }
       _result?.success(false)
     }
+
+    _isRecording = false
+    _hasBeenStarted = false
 
     return false
   }
@@ -245,12 +250,6 @@ class ScreenRecorderBoxPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, 
     val metrics = DisplayMetrics()
     _windowManager?.defaultDisplay?.getMetrics(metrics)
     _screenDensity = metrics.densityDpi
-
-    println("${_displayWidth.toInt()}")
-    println("${_displayHeight.toInt()}")
-    println("$_screenDensity")
-    println("${DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR}")
-    println("${_mediaRecorder?.surface}")
 
     return _mediaProjection?.createVirtualDisplay(
       "MainActivity",

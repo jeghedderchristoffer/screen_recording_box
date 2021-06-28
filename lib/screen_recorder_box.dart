@@ -24,6 +24,8 @@ class ScreenRecorderBox {
       'path': path,
     });
 
+    print(isStarted);
+
     // Stop foreground if not started...
     if (!isStarted) {
       await FlutterForegroundPlugin.stopForegroundService();
